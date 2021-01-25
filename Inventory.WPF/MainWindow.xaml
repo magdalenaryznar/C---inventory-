@@ -1,0 +1,40 @@
+﻿<Window x:Class="Inventory.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Inventory.WPF"
+        mc:Ignorable="d"
+        Title="Inventory App" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button Content="Dodaj produkt" Margin="72,20,644,157"/>
+            <Button Content="Edytuj produkt" Margin="181,20,525,157"/>
+        </Grid>
+        <DataGrid Margin="0,100,0,0" Grid.RowSpan="2" >
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn  IsThreeState="True"  />
+
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Header>
+                        <TextBlock>Id</TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Header>
+                        <TextBlock>Produkt</TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Header>
+                        <TextBlock>Ilość</TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
