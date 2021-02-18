@@ -1,19 +1,65 @@
 ﻿<Window x:Class="WpfInventory.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:this="clr-namespace:WpfInventory" ResizeMode="NoResize"
-        Title="InventoryApp" Height="350" Width="525">
+        xmlns:this="clr-namespace:WpfInventory" ResizeMode="CanResize"
+        Title="InventoryApp" Height="800" Width="800">
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="0,0,0.4,34.8">
-            <Button Content="Dodaj" Margin="3" Command="{Binding Path=AddCommand}" CommandParameter="{Binding}"/>
-            <Button Content="Zapisz" Margin="3" Command="{Binding Path=SaveCommand}" CommandParameter="{Binding DataGridViewModel.Products}"/>
-            <TextBox x:Name="textBox" Height="60" FontSize="10" TextWrapping="Wrap" Text="{Binding Path=Path}" Margin="0,0,0.5,0"/>
-
-        </StackPanel>
-        <this:DataGridView DataContext="{Binding DataGridViewModel}" RenderTransformOrigin="0.525,0.765" Margin="0,0,0,-0.5" Grid.Row="1"/>
+        <DockPanel Grid.Row="0">
+            <ToolBarTray DockPanel.Dock="Top">
+                <ToolBar>
+                    <Button Command="{Binding Path=AddCommand}" CommandParameter="{Binding}">
+                        <StackPanel>
+                            <Image Source="Resources/new.png" Width="24" />
+                            <TextBlock>Dodaj</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="{Binding Path=UpdateDbCommand}" CommandParameter="{Binding DataGridViewModel.Products}">
+                        <StackPanel>
+                            <Image Source="Images/update.png" Width="24" />
+                            <TextBlock>Zapisz baze</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Button_Click" CommandParameter="{Binding DataGridViewModel.Products}">
+                        <StackPanel>
+                            <Image Source="Images/floppy-disk.png" Width="24" />
+                            <TextBlock>Export</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </ToolBar>
+                <ToolBar Margin="200,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <Button Command="Cut">
+                        <StackPanel>
+                            <Image Source="Images/scissors.png" Width="24" />
+                            <TextBlock>Wytnij</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="Copy">
+                        <StackPanel>
+                            <Image Source="Images/copy.png" Width="24" />
+                            <TextBlock>Kopij</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Command="Paste" >
+                        <StackPanel>
+                            <Image Source="Images/paste.png" Width="24" />
+                            <TextBlock>Wklej</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Button_print">
+                        <StackPanel>
+                            <Image Source="Images/printer.png" Width="24" />
+                            <TextBlock>Drukuj</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        <this:DataGridView x:Name="InventoryGrid"  DataContext="{Binding DataGridViewModel}" RenderTransformOrigin="0.525,0.765" Margin="0,0,0,-1" Grid.Row="1"/>
     </Grid>
 </Window>

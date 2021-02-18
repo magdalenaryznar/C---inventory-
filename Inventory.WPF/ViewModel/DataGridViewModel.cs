@@ -6,21 +6,54 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using WpfInventory.Commands;
+using Inventory.WPF.Services;
 
 namespace WpfInventory
 {
+    /// <summary>
+    /// DataGrid view model
+    /// </summary>
     public class DataGridViewModel : ViewModelBase
     {
         ObservableCollection<Product> infos;
+        private DataRepository dataService;
         ICommand _command;
 
+
+        /// <summary>
+        /// Creates DataGridViewModel
+        /// </summary>
         public DataGridViewModel()
         {
-            Products = new ObservableCollection<Product>();
+            dataService = new DataRepository();
 
-            Products.Add(new Product { ProductName = "AA", Quantity = 24, Cost = 100, Vat = 23 });
+            GetStoredProducts();
+
         }
 
+        /// <summary>
+        /// Retrieves stored products from database
+        /// </summary>
+        private void GetStoredProducts()
+        {
+
+            var allProducts = dataService.GetAllProduts();
+
+            Products = new ObservableCollection<Product>(allProducts.Select(c => new Product()
+            {
+                Cost = c.Cost,
+                ProductUnit = c.ProductUnit.Name,
+                CostWithVat = c.Cost,
+                ProductName = c.Name.Name,
+                Quantity = (int)c.ProductQuantity,
+                Vat = c.ProductTax.Amout
+            }));
+        }
+
+
+        /// <summary>
+        /// Visible products
+        /// </summary>
         public ObservableCollection<Product> Products
         {
             get
@@ -34,6 +67,9 @@ namespace WpfInventory
             }
         }
 
+        /// <summary>
+        /// Remove product command
+        /// </summary>
         public ICommand RemoveCommand
         {
             get

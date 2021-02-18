@@ -5,6 +5,9 @@ using System.Text;
 
 namespace WpfInventory.Model
 {
+    /// <summary>
+    /// CSV file model
+    /// </summary>
     public class CsvFile : IFile
     {
         public string Type => "csv";

@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Inventory.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:WpfInventory.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:WpfInventory.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:WpfInventory.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:WpfInventory.Commands.SaveCommand">
+            <summary>
+            Command for saving as file
+            </summary>
+        </member>
+        <member name="M:WpfInventory.Commands.SaveCommand.#ctor(System.String)">
+            <summary>
+            Creates command using end file path
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:WpfInventory.Commands.SaveCommand.CanExecute(System.Object)">
+            <summary>
+            Checks if can execute command
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WpfInventory.Commands.SaveCommand.Execute(System.Object)">
+            <summary>
+            Execute command and stores file in correct location
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="T:WpfInventory.Factories.FileFactory">
+            <summary>
+            FIle factory
+            </summary>
+        </member>
+        <member name="M:WpfInventory.Factories.FileFactory.CreateCsv(System.Collections.Generic.List{WpfInventory.Product})">
+            <summary>
+            Creates CSV file
+            </summary>
+            <param name="products"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WpfInventory.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:WpfInventory.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:WpfInventory.Model.CsvFile">
+            <summary>
+            CSV file model
+            </summary>
+        </member>
+        <member name="T:WpfInventory.Model.IFile">
+            <summary>
+            File interface
+            </summary>
+        </member>
+        <member name="T:WpfInventory.DataGridViewModel">
+            <summary>
+            DataGrid view model
+            </summary>
+        </member>
+        <member name="M:WpfInventory.DataGridViewModel.#ctor">
+            <summary>
+            Creates DataGridViewModel
+            </summary>
+        </member>
+        <member name="M:WpfInventory.DataGridViewModel.GetStoredProducts">
+            <summary>
+            Retrieves stored products from database
+            </summary>
+        </member>
+        <member name="P:WpfInventory.DataGridViewModel.Products">
+            <summary>
+            Visible products
+            </summary>
+        </member>
+        <member name="P:WpfInventory.DataGridViewModel.RemoveCommand">
+            <summary>
+            Remove product command
+            </summary>
+        </member>
+        <member name="T:WpfInventory.ViewModel.MainViewModel">
+            <summary>
+            MainView model
+            </summary>
+        </member>
+        <member name="M:WpfInventory.ViewModel.MainViewModel.#ctor">
+            <summary>
+            Creates view model 
+            </summary>
+        </member>
+        <member name="P:WpfInventory.ViewModel.MainViewModel.AddCommand">
+            <summary>
+            Add command
+            </summary>
+        </member>
+        <member name="P:WpfInventory.ViewModel.MainViewModel.UpdateDbCommand">
+            <summary>
+            Update db command
+            </summary>
+        </member>
+        <member name="M:WpfInventory.ViewModel.MainViewModel.ExecuteUpdateDatabase(System.Object)">
+            <summary>
+            Updates database
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:WpfInventory.ViewModel.MainViewModel.SaveFile(System.String)">
+            <summary>
+            Saves file as CSV
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:WpfInventory.ViewModel.MainViewModel.ExecuteAddProduct(System.Object)">
+            <summary>
+            Adds new product to grid
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:WpfInventory.ViewModel.MainViewModel.Print(System.Windows.Controls.DataGrid)">
+            <summary>
+            Prints all visible products in table
+            </summary>
+            <param name="datagrid"></param>
+        </member>
+        <member name="T:WpfInventory.Product">
+            <summary>
+            Product view model
+            </summary>
+        </member>
+        <member name="T:WpfInventory.ViewModelBase">
+            <summary>
+            Base class for MVVM pattern
+            </summary>
+        </member>
+        <member name="M:WpfInventory.ViewModelBase.OnPropertyChanged(System.String)">
+            <summary>
+            Execute when property changes
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:WpfInventory.DataGridView">
+            <summary>
+            Interaction logic for DataGridView.xaml
+            </summary>
+            <summary>
+            DataGridView
+            </summary>
+        </member>
+        <member name="M:WpfInventory.DataGridView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Inventory.WPF.Commands.PrintCommand">
+            <summary>
+            Command for printig
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Commands.PrintCommand.#ctor(System.Windows.Controls.DataGrid,System.String)">
+            <summary>
+            Command constructor
+            </summary>
+            <param name="dataGrid"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:Inventory.WPF.Commands.PrintCommand.Run">
+            <summary>
+            Runs command
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Commands.PrintCommand.Print(System.Windows.Controls.DataGrid,System.String)">
+            <summary>
+            Prepare print dialog and execeutes it
+            Works using DataGrid visual elements
+            </summary>
+            <param name="dataGrid"></param>
+            <param name="title"></param>
+        </member>
+        <member name="T:Inventory.WPF.Commands.UpdateDatabaseCommand">
+            <summary>
+            Command for updating products in database
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Commands.UpdateDatabaseCommand.#ctor(System.Collections.Generic.List{WpfInventory.Product})">
+            <summary>
+            Creates command
+            </summary>
+            <param name="products"></param>
+        </member>
+        <member name="M:Inventory.WPF.Commands.UpdateDatabaseCommand.Run">
+            <summary>
+            Runs all internal methods and execute command.
+            Saving all new data in database.
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Commands.UpdateDatabaseCommand.GetProductsModel(System.Collections.Generic.List{WpfInventory.Product})">
+            <summary>
+            Generates product model for database to store
+            </summary>
+            <param name="productsToSave"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inventory.WPF.Database.WpfInventoryContext">
+            <summary>
+            DbContext 
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Database.WpfInventoryContext.#ctor">
+            <summary>
+            Create dbContext 
+            </summary>
+        </member>
+        <member name="P:Inventory.WPF.Database.WpfInventoryContext.Products">
+            <summary>
+            Stores all products
+            </summary>
+        </member>
+        <member name="P:Inventory.WPF.Database.WpfInventoryContext.ProductNames">
+            <summary>
+            Store all product names
+            </summary>
+        </member>
+        <member name="P:Inventory.WPF.Database.WpfInventoryContext.ProductTaxes">
+            <summary>
+            Store all taxes
+            </summary>
+        </member>
+        <member name="P:Inventory.WPF.Database.WpfInventoryContext.Units">
+            <summary>
+             Store all product units
+            </summary>
+        </member>
+        <member name="T:Inventory.WPF.Services.DataRepository">
+            <summary>
+            Repository for stored data
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Services.DataRepository.#ctor">
+            <summary>
+            Create repository
+            </summary>
+        </member>
+        <member name="M:Inventory.WPF.Services.DataRepository.GetAllProduts">
+            <summary>
+            Retrieves all products from database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Inventory.WPF.Services.DataRepository.UpdateProducts(System.Collections.Generic.List{Inventory.WPF.DbModels.Product})">
+            <summary>
+            Update all products in database.
+            Warning! Deletes all previous one!
+            </summary>
+            <param name="updatedProducts"></param>
+        </member>
+        <member name="M:Inventory.WPF.Services.DataRepository.GetUnitByName(System.String)">
+            <summary>
+            Get unit by name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inventory.WPF.Services.DataRepository.GetTax(System.Decimal)">
+            <summary>
+            Get tax by amount
+            </summary>
+            <param name="taxAmount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Inventory.WPF.Services.DataRepository.GetProductName(System.String)">
+            <summary>
+            Get product name by ist name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Inventory.WPF.DbModels.Product">
+            <summary>
+            Product entity
+            </summary>
+        </member>
+        <member name="T:Inventory.WPF.DbModels.ProductName">
+            <summary>
+            Product name entity
+            </summary>
+        </member>
+        <member name="T:Inventory.WPF.DbModels.ProductTax">
+            <summary>
+            Product tax entity
+            </summary>
+        </member>
+        <member name="T:Inventory.WPF.DbModels.Unit">
+            <summary>
+            Product unit entity
+            </summary>
+        </member>
+    </members>
+</doc>

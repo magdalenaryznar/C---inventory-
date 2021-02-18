@@ -6,6 +6,9 @@ using System.ComponentModel;
 
 namespace WpfInventory
 {
+    /// <summary>
+    /// Base class for MVVM pattern
+    /// </summary>
     public class ViewModelBase : INotifyPropertyChanged
     {
         public ViewModelBase()
@@ -13,6 +16,10 @@ namespace WpfInventory
 
         }
 
+        /// <summary>
+        /// Execute when property changes
+        /// </summary>
+        /// <param name="name"></param>
         public void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)

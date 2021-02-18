@@ -7,9 +7,19 @@ using WpfInventory;
 
 namespace WpfInventory.Factories
 {
+
+    /// <summary>
+    /// FIle factory
+    /// </summary>
     public class FileFactory
     {
         private string Delimeter = ";";
+
+        /// <summary>
+        /// Creates CSV file
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
         public IFile CreateCsv(List<Product> products)
         {
             var builder = new StringBuilder();

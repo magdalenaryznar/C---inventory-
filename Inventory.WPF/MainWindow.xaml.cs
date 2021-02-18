@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace WpfInventory
 {
@@ -24,6 +25,19 @@ namespace WpfInventory
         {
             InitializeComponent();
             DataContext = new MainViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV file (*.csv)|*.csv";
+            if (saveFileDialog.ShowDialog() == true)
+                (DataContext as MainViewModel).SaveFile(saveFileDialog.FileName);
+        }
+
+        private void Button_print(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainViewModel).Print(InventoryGrid.ProductGrid);
         }
     }
 }
